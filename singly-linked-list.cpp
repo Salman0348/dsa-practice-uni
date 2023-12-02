@@ -63,12 +63,17 @@ class SinglyLinkedList{
 		if(head == NULL){			//list is empty
 			cout<<"list is empty";
 			return;
-		}else if((head->next == NULL)&&(head->data == pos)){	//	only item is present in the list and the data of it is =  pos 
-			cout<<"only item is present in the list and the data of it is =  pos "<<pos<<endl;
-			head  = NULL;
-			delete ptr;
-			return;
-		}
+		}else if(head->next == NULL){	//	only item is present in the list and the data of it is =  pos 
+
+            if(head->data == pos){
+				cout<<"only item is present in the list and the data of it is =  pos "<<pos<<endl;
+                head  = NULL;
+			    delete ptr;
+			    return;
+            } else{
+                cout<<"value does not match"<<endl;
+            }
+			}
 		else{		//more than one items is present
 			if(ptr->data == pos){		//the deleting  item is at start
 				head = ptr->next;
@@ -78,6 +83,7 @@ class SinglyLinkedList{
 					while(ptr != NULL){
 						if(ptr->data == pos){
 							q->next = ptr->next;
+							delete ptr;
 							return;
 						}
 						q =ptr;
@@ -85,8 +91,8 @@ class SinglyLinkedList{
 					}
 					cout<<endl<<"Node not found for "<<pos<<endl;
 				}	
-				q->next = ptr->next;			
-				delete ptr;
+							
+				
 			}
 			
 		}
