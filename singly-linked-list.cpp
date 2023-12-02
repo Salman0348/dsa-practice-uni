@@ -1,4 +1,5 @@
 #include<iostream>
+
 using namespace std;
 
 class Node{
@@ -52,10 +53,39 @@ class SinglyLinkedList{
 			}
 			ptr = ptr->next;
 			}
-			newNode->next = ptr->next;
+			newNode->next = ptr->next;{
 			ptr->next = newNode;
 			
 	}
+	}
+	void deleteNode(int pos)
+	{		Node* ptr = head, *q;
+		if(head == NULL){			//list is empty
+			cout<<"list is empty";
+			return;
+		}else if((head->next == NULL)&&(head->data == pos)){	//	only item is present in the list and the data of it is =  pos 
+			cout<<"only item is present in the list and the data of it is =  pos "<<pos<<endl;
+			head  = NULL;
+			delete ptr;
+			return;
+		}
+		else{		//more than one items is present
+			if(ptr->data == pos){		//the deleting  item is at start
+				head = ptr->next;
+				delete ptr;	
+				return;
+				}else{					// the deleting item is in mid or at the end
+					while((ptr->data != pos)&&(ptr->next != NULL)){
+					q =ptr;
+					ptr = ptr->next;
+					}
+				}	
+				q->next = ptr->next;			
+				delete ptr;
+			}
+			
+		}
+	
 	
 	void display(){
 		Node*ptr =head;
@@ -76,6 +106,11 @@ int main(){
 	s1.insertEnd(4);
 	s1.insertStart(0);
 	s1.insertAfter(99,2);
+	cout<<"display befor delete"<<endl;
 	s1.display();
+	s1.deleteNode(4);
+	cout<<endl<<"display after delete"<<endl;
+	s1.display();
+
 
 }
