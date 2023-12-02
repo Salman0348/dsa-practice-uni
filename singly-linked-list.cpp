@@ -75,10 +75,15 @@ class SinglyLinkedList{
 				delete ptr;	
 				return;
 				}else{					// the deleting item is in mid or at the end
-					while((ptr->data != pos)&&(ptr->next != NULL)){
-					q =ptr;
-					ptr = ptr->next;
+					while(ptr != NULL){
+						if(ptr->data == pos){
+							q->next = ptr->next;
+							return;
+						}
+						q =ptr;
+						ptr = ptr->next;
 					}
+					cout<<endl<<"Node not found for "<<pos<<endl;
 				}	
 				q->next = ptr->next;			
 				delete ptr;
@@ -108,7 +113,7 @@ int main(){
 	s1.insertAfter(99,2);
 	cout<<"display befor delete"<<endl;
 	s1.display();
-	s1.deleteNode(4);
+	s1.deleteNode(2);
 	cout<<endl<<"display after delete"<<endl;
 	s1.display();
 
