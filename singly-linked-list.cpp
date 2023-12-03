@@ -53,10 +53,8 @@ class SinglyLinkedList{
 			}
 			ptr = ptr->next;
 			}
-			newNode->next = ptr->next;{
+			newNode->next = ptr->next;
 			ptr->next = newNode;
-			
-	}
 	}
 	void deleteNode(int pos)
 	{		Node* ptr = head, *q;
@@ -116,7 +114,7 @@ int main(){
 	s1.insertEnd(3);
 	s1.insertEnd(4);
 	s1.insertStart(0);
-	s1.insertAfter(99,2);
+	s1.insertAfter(99,4);
 	cout<<"display befor delete"<<endl;
 	s1.display();
 	s1.deleteNode(2);
