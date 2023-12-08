@@ -29,6 +29,15 @@ int arr[50];
 
     }
 
+    void deleteItem(int index)
+    {
+        for(int i =  index; i < size; i++)
+        {
+            arr[i] = arr[i+1];
+        }
+        size--;
+
+    }
     void print()
     {
         for (int i = 0; i < size; i++){
@@ -43,6 +52,9 @@ int main(){
     addItem(5,4);
     addItem(10,2);
     cout << "size of the list is: " << size <<endl;
-    cout << endl << "elements of the list are " << endl;
+    cout << endl << "elements of the list before deletetion are: " << endl;
+    print();
+    deleteItem(2);
+    cout << endl << "array after deletetion: " << endl;
     print();
 }
