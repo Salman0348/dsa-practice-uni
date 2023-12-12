@@ -90,8 +90,13 @@ class List
         }
     }
 };
+    List createList()
+    {
+        List newList;
+        return newList;
+    }
 int main(){
-    List l1;
+    List l1 = createList();
     int arr2[50];
     l1.addItem(1,0);
     l1.addItem(2,1);
