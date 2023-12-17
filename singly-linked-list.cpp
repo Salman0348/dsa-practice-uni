@@ -8,14 +8,20 @@ public:
 	int data;
 	Node *next;
 
-	Node(int d) : data(d), next(NULL){};
+	Node(int d){
+		this->data = d;
+		this->next = NULL;
+	};
 };
 class SinglyLinkedList
 {
 	Node *head;
 
 public:
-	SinglyLinkedList() : head(NULL){};
+	SinglyLinkedList() 
+	{
+		head = NULL;
+	};
 	// function to insert a node at end
 	void insertEnd(int val)
 	{
@@ -33,7 +39,7 @@ public:
 			ptr->next = newNode;
 		}
 	}
-	// function to insert a node at the start
+	// function to insert a node  at the start
 	void insertStart(int val)
 	{
 		Node *newNode = new Node(val);
