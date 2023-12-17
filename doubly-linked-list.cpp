@@ -82,16 +82,16 @@ public:
             return;
         }
         else if (head->next == NULL)
-        { //	one node is present in the list and the data of it is =  pos
+        { //one node is present
             if (head->data == pos)
-            {
+            {   //	the data of the node  ==  pos
                 head = NULL;
                 delete ptr;
                 return;
             }
             else
             {
-                //	one node is present in the list and the data of it is !=  pos
+                //	the data of the node  !=  pos
                 cout <<endl << pos << " value does not match" << endl;
             }
         }
@@ -99,8 +99,8 @@ public:
         { // more than one nodes is present
             if (ptr->data == pos)
             { // the deleting node is the first node
-                head = ptr->next;
-                ptr->next->prev = NULL;
+                head = head->next;
+                head->prev = NULL;
                 delete ptr;
                 return;
             }
@@ -109,14 +109,14 @@ public:
                 while (ptr != NULL)
                 {
                     if (ptr->data == pos)
-                    {   
-                        if(ptr->next == NULL)   //if the node is the last
-                        {
-                            ptr->prev->next = ptr->next;
+                    { //a node exists with the pos value
+                        if(ptr->next == NULL)   
+                        { //the node is the last one
+                            ptr->prev->next = NULL;
                             delete ptr;
                         }
                         else                
-                        {                       //if the node is in between
+                        { //the node is in between                    
                             ptr->prev->next = ptr->next;
                             ptr->next->prev = ptr->prev;
                             delete ptr;
@@ -137,7 +137,7 @@ public:
         Node *ptr = head;
         while (ptr)
         {
-            cout << ptr->data << " ";
+            cout  << ptr->data << " ";
             ptr = ptr->next;
         }
     }
@@ -147,14 +147,14 @@ int main()
 {
     DoublyLinkedList s1;
     s1.insertEnd(1);
-    // s1.insertEnd(2);
+    s1.insertEnd(2);
     // s1.insertEnd(3);
     // s1.insertEnd(4);
     // s1.insertStart(0);
-    // s1.insertAfter(99, 2);
+    s1.insertAfter(99, 1);
     cout << "display befor delete" << endl;
     s1.display();
-    s1.deleteNode(3);
+    s1.deleteNode(2);
     cout << endl
          << "display after delete" << endl;
     s1.display();

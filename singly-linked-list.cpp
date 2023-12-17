@@ -45,19 +45,19 @@ public:
 	void insertAfter(int val, int pos)
 	{
 
-		Node *newNode = new Node(val);
-		Node *ptr = head;
-		while (ptr->data != pos)
-		{ // checks for the given node(vlue)
-			if (ptr->next == NULL)
-			{
-				cout << "match not found";
-				return;
+			Node *newNode = new Node(val);
+			Node *ptr = head;
+			while (ptr->data != pos)
+			{ // checks for the given node(vlue)
+				if (ptr->next == NULL)
+				{
+					cout << "match not found";
+					return;
+				}
+				ptr = ptr->next;
 			}
-			ptr = ptr->next;
-		}
-		newNode->next = ptr->next;
-		ptr->next = newNode;
+			newNode->next = ptr->next;
+			ptr->next = newNode;
 	}
 	void deleteNode(int pos)
 	{
@@ -67,16 +67,16 @@ public:
 			cout << "list is empty";
 		}
 		else if (head->next == NULL)
-		{ //	only item is present in the list and the data of it is =  pos
+		{ //	only item is present in the list 
 			if (head->data == pos)
-			{
+			{// the data of the node is =  pos
 				cout << "only item is present in the list and the data of it is =  pos " << pos << endl;
 				head = NULL;
 				delete ptr;
 				
 			}
 			else
-			{
+			{// the data of the node is !=  pos
 				cout << "value does not match" << endl;
 			}
 		}
@@ -89,19 +89,19 @@ public:
 			}
 			else
 			{ // the deleting item is in mid or at the end
-				while (ptr != NULL)
+			while (ptr->data != pos)
+			{ // checks for the given node(vlue)
+				if (ptr->next == NULL)
 				{
-					if (ptr->data == pos)
-					{
-						q->next = ptr->next;
-						delete ptr;
-						return;
-					}
-					q = ptr;
-					ptr = ptr->next;
+					cout << "match not found for delete";
+					return;
 				}
-				cout << endl
-					 << "Node not found for " << pos << endl;
+				q = ptr;
+				ptr = ptr->next;
+			}
+			q->next = ptr->next;
+			delete ptr;
+			
 			}
 		}
 	}
@@ -114,22 +114,23 @@ public:
 			cout << ptr->data << " ";
 			ptr = ptr->next;
 		}
+		cout << endl;
 	}
 };
 
 int main()
 {
 	SinglyLinkedList s1;
-	s1.insertEnd(1);
-	s1.insertEnd(1);
-	s1.insertEnd(1);
+	// s1.insertEnd(1);
+	// s1.insertEnd(1);
+	// s1.insertEnd(1);
 	s1.insertStart(0);
 	s1.insertStart(1);
 	// s1.insertEnd(2);
-	// s1.insertAfter(99,1);
-	// cout<<"display befor delete"<<endl;
-	s1.deleteNode(0);
+	s1.insertAfter(99,1);
+	cout<<"display befor delete"<<endl;
 	s1.display();
-	// cout<<endl<<"display after delete"<<endl;
-	// s1.display();
+	s1.deleteNode(11);
+	cout<<endl<<"display after delete"<<endl;
+	s1.display();
 }

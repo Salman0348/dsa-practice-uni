@@ -60,22 +60,25 @@ class SinglyCircularLinkedList{
         if(head == NULL)
         {
             cout<<"the list is empty " << endl;
-            return;
+           
         }
-        Node *ptr = head;
-        do
-        {   
-            if(ptr->data == pos)
-            {
-                Node *newNode = new Node(val);
-                newNode->next = ptr->next;
-                ptr->next = newNode;
-                return;
+        else
+        {  
+            Node *newNode = new Node(val);
+            Node *ptr = head;
+            
+            while (ptr->data != pos)
+            { // checks for the given node(vlue)
+                if (ptr->next == head)
+                {
+                    cout << "match not found";
+                    return;
+                }
+                ptr = ptr->next;
             }
-            ptr = ptr->next;
-        } while (ptr != head);
-
-        cout<<"item does not match for " << pos << endl;
+            newNode->next = ptr->next;
+            ptr->next = newNode;
+        }
     }
 
     void del(int pos)
@@ -147,11 +150,13 @@ class SinglyCircularLinkedList{
 };
 int main(){
     SinglyCircularLinkedList c;
-    c.insertNodeAtEnd(1);
-    c.insertNodeAtEnd(2);
+    // c.insertNodeAtEnd(1);
+    // c.insertNodeAtEnd(2);
     c.insertNodeAtStart(0);
-    c.insertNodeAtStart(-1);
-    c.insertAfter(5,2);
+    // c.insertNodeAtStart(-1);
+    c.insertAfter(5,0);
+    c.insertAfter(8,0);
+    c.insertAfter(11,9);
     cout << "display function is here before delete " << endl;
     c.display();
     c.del(1);
