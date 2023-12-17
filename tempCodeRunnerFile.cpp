@@ -1,3 +1,2 @@
-
-    l1.addItem(3,2);
-    l1.addItem(4,3);
+   // cout<< endl << "display function is here after delete " << endl;
+    // c.display();

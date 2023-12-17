@@ -82,52 +82,58 @@ class SinglyCircularLinkedList{
     }
 
     void del(int pos)
-    {    
-        if(head == NULL)        //if the list is empty
-        {
-            cout<<"list is empty " <<endl;
-            return;
-        }
-                                
-        if(head->data == pos)       // if the deleting node is the head node
-        {
-            Node *lastNode = head;
-            while(lastNode->next != head)   // to obatain the next of the last node 
-            {
-                lastNode = lastNode->next;
-            }
-        
-            if(head == head->next)      //if there is only one node
-            {
-                delete head;
-                head = NULL;
+	{
+		Node *ptr = head, *q;
+		if (head == NULL)
+		{ // list is empty
+			cout << "list is empty";
+		}
 
-            }else // for more than one node, the last node should point to the second node after deletion
+		else if (head->next == head)
+		{ //	only one item is present in the list 
+			if (head->data == pos)
+			{// the data of the node is =  pos
+				cout << "only item is present in the list and the data of it is =  pos " << pos << endl;
+				head = NULL;
+				delete ptr;
+				
+			}
+			else
+			{// the data of the node is !=  pos
+				cout << "value does not match" << endl;
+			}
+		}
+		else
+		{ // more than one nodes is present
+			if (ptr->data == pos)
+			{ // the deleting  node is at start
+				
+                while(ptr->next != head)
                 {
-                    lastNode->next = head->next;
-                    Node *ptr = head;
-                    head = head->next;
-                    delete ptr;
-                    
-                } 
-                return;    
-        }else                   //the deleting node is not the head node
-            {
-                Node *p = head, *q = NULL;
-                do
-                {           //finding the pos valued node
-                    if(p->data == pos)      
-                    {
-                        q->next = p->next;
-                        return;
-                    }
-                    q = p;
-                    p = p->next;
-                } while (p != head);
-                cout<< endl << "deletion match not found for "<< pos << endl;
-
-                
-            }
+                    ptr = ptr->next;
+                }
+                q = head;
+                head = head->next;
+                ptr->next = head;
+				delete q;
+			}
+			else
+			{ // the deleting node is in mid or at the end
+			while (ptr->data != pos)
+			{ // checks for the given node(vlue)
+				if (ptr->next == head)
+				{
+					cout << "match not found for delete";
+					return;
+				}
+				q = ptr;
+				ptr = ptr->next;
+			}
+			q->next = ptr->next;
+			delete ptr;
+		
+			}
+        }
     }
 
     void display()
@@ -156,10 +162,10 @@ int main(){
     // c.insertNodeAtStart(-1);
     c.insertAfter(5,0);
     c.insertAfter(8,0);
-    c.insertAfter(11,9);
+    // c.insertAfter(11,9);
     cout << "display function is here before delete " << endl;
     c.display();
-    c.del(1);
+    c.del(5);
     cout<< endl << "display function is here after delete " << endl;
     c.display();
 }
