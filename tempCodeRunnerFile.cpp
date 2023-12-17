@@ -1,8 +1,3 @@
- // q.enQueue(2);
-    // q.enQueue(4);
-    // q.enQueue(1);
-    // q.enQueue(3);
-    // q.enQueue(13);
-    // q.deQueue();
-    // q.deQueue();
-    // q.enQueue(10);
+
+    l1.addItem(3,2);
+    l1.addItem(4,3);

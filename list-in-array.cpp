@@ -4,25 +4,27 @@ using namespace std;
 class List
 {   
     public:
-      int arr1[50];
+        int * arr1;
      
-    int size;
-    List(){
-      size =0;
-   
+        int size;
+        int capacity;
+    List(int capacity){
+         size = 0;
+         this->capacity = capacity;
+         arr1 = new int[capacity];
     }
 
 
     void addItem(int val,  int index)
     {   
        
-        if( size == 50)     // if the array is full
+        if( size == capacity-1)     // if the array is full
         {
             cout << " list is full " << endl; 
             return;
         }
 
-        if(index > size)
+        if(index > capacity-1)
         {
           cout << "index is greater than the size of list " << endl;
           return;  
@@ -64,7 +66,7 @@ class List
     {
         return arr1[index];
     }
-    void replace(int i,int val){
+    void replace(int i, int val){
     	arr1[i]=val;
 	}
     int find(int val)
@@ -90,13 +92,13 @@ class List
         }
     }
 };
-    List createList()
+    List createList(int capacity)
     {
-        List newList;
+        List newList(capacity);
         return newList;
     }
 int main(){
-    List l1 = createList();
+    List l1 = createList(4);
     int arr2[50];
     l1.addItem(1,0);
     l1.addItem(2,1);
@@ -104,7 +106,7 @@ int main(){
     l1.addItem(4,3);
     l1.addItem(5,4);
     l1.addItem(10,2);
-    l1.replace(3,9);
+    // l1.replace(3,9);
     // l1.clear();
     cout << endl << "arr1: ";
     l1.print(l1.arr1);
