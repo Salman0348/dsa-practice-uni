@@ -71,23 +71,9 @@ public:
 		if (head == NULL)
 		{ // list is empty
 			cout << "list is empty";
+			return;
 		}
-		else if (head->next == NULL)
-		{ //	only item is present in the list 
-			if (head->data == pos)
-			{// the data of the node is =  pos
-				cout << "only item is present in the list and the data of it is =  pos " << pos << endl;
-				head = NULL;
-				delete ptr;
-				
-			}
-			else
-			{// the data of the node is !=  pos
-				cout << "value does not match" << endl;
-			}
-		}
-		else
-		{ // more than one items is present
+
 			if (ptr->data == pos)
 			{ // the deleting  item is at start
 				head = ptr->next;
@@ -110,7 +96,7 @@ public:
 			
 			}
 		}
-	}
+	
 
 	void display()
 	{
@@ -127,16 +113,16 @@ public:
 int main()
 {
 	SinglyLinkedList s1;
-	// s1.insertEnd(1);
-	// s1.insertEnd(1);
-	// s1.insertEnd(1);
+	s1.insertEnd(1);
+	s1.insertEnd(1);
+	s1.insertEnd(1);
 	s1.insertStart(0);
 	s1.insertStart(1);
-	// s1.insertEnd(2);
+	s1.insertEnd(2);
 	s1.insertAfter(99,1);
 	cout<<"display befor delete"<<endl;
 	s1.display();
-	s1.deleteNode(11);
+	s1.deleteNode(1);
 	cout<<endl<<"display after delete"<<endl;
 	s1.display();
 }

@@ -18,7 +18,7 @@ class List
     void addItem(int val,  int index)
     {   
        
-        if( size == capacity-1)     // if the array is full
+        if( size == capacity)     // if the array is full
         {
             cout << " list is full " << endl; 
             return;
@@ -26,7 +26,7 @@ class List
 
         if(index > capacity-1)
         {
-          cout << "index is greater than the size of list " << endl;
+          cout << "index is greater than the capacity of list " << endl;
           return;  
         }
 
